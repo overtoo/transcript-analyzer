@@ -40,7 +40,10 @@ const useAudio = (url, autoPlay, seekTo, refreshAudio, loadAudio) => {
   useEffect(() => {
     // console.log(refreshAudio + " iss this chang");
     // console.log("SEEK TOO");
-    reload(seekTo);
+    if (loadAudio) {
+      reload(seekTo);
+    }
+
     // alert("worked");
 
     audio.addEventListener("ended", () => setPlaying(false));
@@ -48,7 +51,26 @@ const useAudio = (url, autoPlay, seekTo, refreshAudio, loadAudio) => {
     return () => {
       audio.removeEventListener("ended", () => setPlaying(false));
     };
-  }, [playing, seekTo, refreshAudio, loadAudio]);
+    // }, [playing, seekTo, refreshAudio, loadAudio]);
+  }, [playing, seekTo, refreshAudio, seekTo]);
+
+  useEffect(() => {
+    // console.log(refreshAudio + " iss this chang");
+    console.log("player loaded and ready to go");
+    // console.log("SEEK TOO");
+    if (loadAudio) {
+      reload(seekTo);
+    }
+
+    // alert("worked");
+
+    audio.addEventListener("ended", () => setPlaying(false));
+
+    return () => {
+      audio.removeEventListener("ended", () => setPlaying(false));
+    };
+    // }, [loadAudio]);
+  }, [loadAudio]);
 
   return [playing, toggle, reload, audio.currentTime, time];
 };

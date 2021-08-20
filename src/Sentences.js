@@ -167,12 +167,12 @@ const Sentences = ({
     if (rawText.cn != "unloaded" && rawText.data) {
       setData(rawText.data);
       console.log("data from cloud has been loaded. Should only happen once.");
+      setLoadAudio(true);
     } else if (rawText.cn != "unloaded" && !rawText.data) {
       console.log(
         "raw data from cloud has loaded. NO TIMESTAMPS. should never happen unless raw."
       );
 
-      setLoadAudio(true);
       setPageLoaded(true);
 
       let tempSentencesCN = rawText.cn
