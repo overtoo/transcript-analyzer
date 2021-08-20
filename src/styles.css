@@ -1,0 +1,122 @@
+.card {
+  margin: 0 auto;
+  border-style: solid;
+  width: 62%;
+  text-align: center;
+  padding: 20px;
+}
+
+.hide {
+  display: none;
+}
+
+.cn {
+  font-size: 2em;
+  pointer-events: none;
+}
+
+.anki-adder {
+  font-size: 0.7em;
+  padding: 0;
+}
+
+.cards-wrapper {
+  /* position: absolute; */
+  margin-top: 100px;
+  width: 85%;
+  display: block;
+}
+
+.save-to-cloud {
+  position: fixed;
+  top: 45px;
+}
+
+.input-box {
+  width: 20%;
+  position: fixed;
+  right: 100px;
+  top: 50px;
+  font-size: 0.7em;
+}
+.hl {
+  color: red;
+}
+
+.container {
+  display: flex;
+}
+
+.input {
+  height: 400px;
+  font-size: 2em;
+  border-style: solid;
+}
+
+p {
+  pointer-events: none;
+}
+
+.time {
+  display: none;
+}
+
+.off {
+  pointer-events: none;
+  /* display: inline-block; */
+}
+
+.text-first {
+  width: 100%;
+  background-color: pink;
+  position: fixed;
+}
+
+.bubble {
+  margin: 8px 2px 8px 2px;
+  padding: 7px;
+  white-space: nowrap;
+  font-size: 1.7em;
+  line-height: 2em;
+  height: 10px;
+  border-radius: 5px;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.blue {
+  background-color: lightblue;
+}
+
+.red {
+  background-color: pink;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.nocards-wrapper {
+  margin-top: 45px;
+  width: 50%;
+  font-size: 0.5em;
+  margin: 50px;
+}
+
+.nocard {
+  display: inline;
+}
+
+.timeToDisplay2 {
+  pointer-events: all;
+  background-color: grey;
+}
+
+.timeToDisplay3 {
+  pointer-events: all;
+  background-color: pink;
+}
