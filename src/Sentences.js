@@ -46,19 +46,21 @@ const Sentences = ({
   useEffect(() => {}, []);
 
   useEffect(() => {
-    window.addEventListener("wheel", () => handleScroll());
-    window.addEventListener("keypress", (e) => handlePress(e));
-    if (data.length > 2 && autoScroll) {
-      console.log(getTime);
-      let targetIndex;
-      data.map((item, i) => {
-        if (getTime > item.time) {
-          targetIndex = i;
+    if (displayController.card && !displayController.targetSen) {
+      window.addEventListener("wheel", () => handleScroll());
+      window.addEventListener("keypress", (e) => handlePress(e));
+      if (data.length > 2 && autoScroll) {
+        console.log(getTime);
+        let targetIndex;
+        data.map((item, i) => {
+          if (getTime > item.time) {
+            targetIndex = i;
+          }
+        });
+        console.log(targetIndex);
+        if (targetIndex > 0) {
+          executeScroll(targetIndex - 1);
         }
-      });
-      console.log(targetIndex);
-      if (targetIndex > 0) {
-        executeScroll(targetIndex - 1);
       }
     }
   }, [getTime]);
