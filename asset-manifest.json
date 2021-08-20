@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/transcript-analyzer/static/css/main.b0568b69.chunk.css",
+    "main.js": "/transcript-analyzer/static/js/main.66979aed.chunk.js",
+    "main.js.map": "/transcript-analyzer/static/js/main.66979aed.chunk.js.map",
+    "runtime-main.js": "/transcript-analyzer/static/js/runtime-main.521958ec.js",
+    "runtime-main.js.map": "/transcript-analyzer/static/js/runtime-main.521958ec.js.map",
+    "static/js/2.5e94f72b.chunk.js": "/transcript-analyzer/static/js/2.5e94f72b.chunk.js",
+    "static/js/2.5e94f72b.chunk.js.map": "/transcript-analyzer/static/js/2.5e94f72b.chunk.js.map",
+    "static/js/3.26c386c9.chunk.js": "/transcript-analyzer/static/js/3.26c386c9.chunk.js",
+    "static/js/3.26c386c9.chunk.js.map": "/transcript-analyzer/static/js/3.26c386c9.chunk.js.map",
+    "index.html": "/transcript-analyzer/index.html",
+    "static/css/main.b0568b69.chunk.css.map": "/transcript-analyzer/static/css/main.b0568b69.chunk.css.map",
+    "static/js/2.5e94f72b.chunk.js.LICENSE.txt": "/transcript-analyzer/static/js/2.5e94f72b.chunk.js.LICENSE.txt",
+    "static/media/deepl.8202a108.txt": "/transcript-analyzer/static/media/deepl.8202a108.txt",
+    "static/media/pinyin.4ce560de.txt": "/transcript-analyzer/static/media/pinyin.4ce560de.txt",
+    "static/media/raw.bdae9a8f.txt": "/transcript-analyzer/static/media/raw.bdae9a8f.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.521958ec.js",
+    "static/js/2.5e94f72b.chunk.js",
+    "static/css/main.b0568b69.chunk.css",
+    "static/js/main.66979aed.chunk.js"
+  ]
+}
