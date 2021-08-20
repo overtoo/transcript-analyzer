@@ -16,6 +16,7 @@ const Sentences = ({
   getTime,
   parentLockTime,
   rawText,
+  setLoadAudio,
 }) => {
   //refs thing
   const itemsRef = useRef([]);
@@ -24,9 +25,29 @@ const Sentences = ({
   const executeScroll = (point) => itemsRef.current[point].scrollIntoView();
 
   function toggleScroll() {
-    setAutoScroll(!autoScroll);
+    if (displayController.card) {
+      setAutoScroll(!autoScroll);
+    }
   }
+
+  function handleScroll() {
+    if (autoScroll) {
+      setAutoScroll(false);
+      console.log("scrolling");
+    }
+  }
+
+  function handlePress(e) {
+    if (e.keyCode == 97) {
+      setAutoScroll(true);
+    }
+  }
+
+  useEffect(() => {}, []);
+
   useEffect(() => {
+    window.addEventListener("wheel", () => handleScroll());
+    window.addEventListener("keypress", (e) => handlePress(e));
     if (data.length > 2 && autoScroll) {
       console.log(getTime);
       let targetIndex;
@@ -62,7 +83,7 @@ const Sentences = ({
   async function saveToCloud() {
     // alert();
     const citiesRef = db.collection("rawtranscripts");
-    await citiesRef.doc(rawText.id).set({
+    await citiesRef.doc("active").set({
       rawEN: rawText.en,
       rawPY: rawText.py,
       raw: rawText.cn,
@@ -149,6 +170,7 @@ const Sentences = ({
         "raw data from cloud has loaded. NO TIMESTAMPS. should never happen unless raw."
       );
 
+      setLoadAudio(true);
       setPageLoaded(true);
 
       let tempSentencesCN = rawText.cn
@@ -254,7 +276,10 @@ const Sentences = ({
       }`}
     >
       <div className="save-to-cloud">
-        <button onClick={toggleScroll}> Click to scroll </button>
+        <button onClick={toggleScroll}>
+          {" "}
+          {autoScroll ? "AUTOSCROLL: ON" : "AUTOSCROLL: OFF"}{" "}
+        </button>
 
         <button onClick={saveToCloud}>Save to Cloud</button>
       </div>
@@ -312,7 +337,9 @@ const Sentences = ({
                   lockTime(item.index);
                 }}
               >
-                {item.fixed ? "unfix" : "fix"}
+                {item.fixed
+                  ? "refix (click to refix audio to this position)"
+                  : "fix (click to fix audio to this position)"}
               </p>
               {/* <p
                 className={`${

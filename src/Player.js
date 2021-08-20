@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const useAudio = (url, autoPlay, seekTo, refreshAudio) => {
+const useAudio = (url, autoPlay, seekTo, refreshAudio, loadAudio) => {
   const [audio] = useState(new Audio(url));
   const [playing, setPlaying] = useState(autoPlay);
   const [time, setTime] = useState(0);
@@ -20,6 +20,14 @@ const useAudio = (url, autoPlay, seekTo, refreshAudio) => {
     playing ? audio.play() : audio.pause();
   }, [playing]);
 
+  // useEffect(
+  //   (seekTo) => {
+  //     reload();
+  //     alert("worked");
+  //   },
+  //   [loadAudio]
+  // );
+
   const reload = (time) => {
     audio.pause();
     // audio.load();
@@ -33,23 +41,33 @@ const useAudio = (url, autoPlay, seekTo, refreshAudio) => {
     // console.log(refreshAudio + " iss this chang");
     // console.log("SEEK TOO");
     reload(seekTo);
+    // alert("worked");
+
     audio.addEventListener("ended", () => setPlaying(false));
 
     return () => {
       audio.removeEventListener("ended", () => setPlaying(false));
     };
-  }, [playing, seekTo, refreshAudio]);
+  }, [playing, seekTo, refreshAudio, loadAudio]);
 
   return [playing, toggle, reload, audio.currentTime, time];
 };
 
-const Player = ({ url, autoPlay, seekTo, refreshAudio, setGetTime }) => {
+const Player = ({
+  url,
+  autoPlay,
+  seekTo,
+  refreshAudio,
+  loadAudio,
+  setGetTime,
+}) => {
   const [cleanCurrentTime, setCleanCurrentTime] = useState("0: 00");
   const [playing, toggle, reload, currentTime, time] = useAudio(
     url,
     autoPlay,
     seekTo,
-    refreshAudio
+    refreshAudio,
+    loadAudio
   );
 
   function display(seconds) {
@@ -68,16 +86,16 @@ const Player = ({ url, autoPlay, seekTo, refreshAudio, setGetTime }) => {
 
   return (
     <div>
-      <button onClick={toggle}>{playing ? "Pause" : "Play"}</button>
-      <button
+      {/* <button onClick={toggle}>{playing ? "Pause" : "Play"}</button> */}
+      {/* <button
         onClick={() => {
           reload(seekTo);
         }}
       >
         {"load"}
-      </button>
+      </button> */}
       {cleanCurrentTime} {"  "}
-      {(Math.round(currentTime * 10) / 10).toFixed(1)}
+      {/* {(Math.round(currentTime * 10) / 10).toFixed(1)} */}
       {/* {Math.round(currentTime)} */}
     </div>
   );

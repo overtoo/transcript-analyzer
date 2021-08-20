@@ -38,6 +38,7 @@ const App = () => {
     card: true,
   });
   const [refresh, setRefresh] = useState(0);
+  const [loadAudio, setLoadAudio] = useState(false);
 
   // Loads chat messages history and listens for upcoming ones.
   async function loadEpisode(episode = "46") {
@@ -262,10 +263,11 @@ const App = () => {
           setGetTime={setGetTime}
           seekTo={timePosition}
           refreshAudio={refreshAudio}
+          loadAudio={loadAudio}
           // url={`https://raw.githubusercontent.com/overtoo/test/main/ep46.mp3#t=${timePosition}`}
           url={`https://raw.githubusercontent.com/overtoo/test/main/ep46.mp3`}
         />
-        <button onClick={loadData}>ep. 47</button>
+        {/* <button onClick={loadData}>ep. 47</button> */}
         <button onClick={umOk}>
           {displayController.targetSen ? "show All" : "target sentences only"}
         </button>
@@ -291,6 +293,7 @@ const App = () => {
             controlMusic={controlMusic}
             displayController={displayController}
             cardChange={displayController.card}
+            setLoadAudio={setLoadAudio}
           />
         </div>
 
