@@ -33,7 +33,6 @@ const Sentences = ({
   function handleScroll() {
     if (autoScroll) {
       setAutoScroll(false);
-      console.log("scrolling");
     }
   }
 
@@ -43,12 +42,17 @@ const Sentences = ({
     }
   }
 
+  function handleClick() {
+    setLoadAudio(true);
+  }
+
   useEffect(() => {}, []);
 
   useEffect(() => {
     if (displayController.card && !displayController.targetSen) {
       window.addEventListener("wheel", () => handleScroll());
       window.addEventListener("keypress", (e) => handlePress(e));
+      window.addEventListener("click", (e) => handleClick(e));
       if (data.length > 2 && autoScroll) {
         console.log(getTime);
         let targetIndex;
@@ -169,7 +173,7 @@ const Sentences = ({
     if (rawText.cn != "unloaded" && rawText.data) {
       setData(rawText.data);
       console.log("data from cloud has been loaded. Should only happen once.");
-      setLoadAudio(true);
+      // setLoadAudio(true);
     } else if (rawText.cn != "unloaded" && !rawText.data) {
       console.log(
         "raw data from cloud has loaded. NO TIMESTAMPS. should never happen unless raw."
