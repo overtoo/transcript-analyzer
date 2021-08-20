@@ -57,7 +57,9 @@ const Sentences = ({
         }
       });
       console.log(targetIndex);
-      executeScroll(targetIndex - 1);
+      if (targetIndex > 0) {
+        executeScroll(targetIndex - 1);
+      }
     }
   }, [getTime]);
 
